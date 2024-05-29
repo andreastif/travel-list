@@ -5,6 +5,12 @@ export const theme = {
     fontFamily: {
       robot: ["Roboto Mono", "Roboto", "sans-serif"],
     },
+    minHeight: {
+      "screen-50": "50vh",
+      "screen-60": "60vh",
+      "screen-70": "70vh",
+      "screen-80": "80vh",
+    },
     spacing: {
       152: "38rem",
       "7/10": "70%",
