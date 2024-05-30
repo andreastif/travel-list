@@ -17,14 +17,7 @@ export const TravelPage = () => {
   };
 
   const handlePackItem = (id: number) => {
-    setItems((prev) => {
-      return prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, packed: !item.packed };
-        }
-        return item;
-      });
-    });
+    setItems((prev) => prev.map((item) => (item.id === id ? { ...item, packed: !item.packed } : item)));
   };
 
   return (
