@@ -20,11 +20,20 @@ export const TravelPage = () => {
     setItems((prev) => prev.map((item) => (item.id === id ? { ...item, packed: !item.packed } : item)));
   };
 
+  const handleClearList = () => {
+    setItems([]);
+  };
+
   return (
     <>
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} onPackItem={handlePackItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onClearList={handleClearList}
+        onPackItem={handlePackItem}
+      />
       <Stats items={items} />
     </>
   );

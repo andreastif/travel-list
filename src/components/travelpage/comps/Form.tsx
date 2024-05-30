@@ -109,7 +109,7 @@ export const Form = ({ onAddItems }: { onAddItems: (item: IItem) => void }) => {
           onChange={handleDescription}
         />
 
-        <button className="btn btn-sm btn-success px-12 btn-circle">ADD</button>
+        <button className="btn btn-sm btn-success w-24 h-10 btn-circle">ADD</button>
       </form>
     </div>
   );
