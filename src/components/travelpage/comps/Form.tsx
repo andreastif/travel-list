@@ -49,13 +49,12 @@ const selectStyles: StylesConfig<IAmountOption, false> = {
   menu: (base) => ({
     ...base,
     marginTop: "5px",
-
     border: "none",
     borderColor: "rgb(254, 243, 199)",
   }),
 };
 
-export const Form = () => {
+export const Form = ({ onAddItems }: { onAddItems: (item: IItem) => void }) => {
   const [description, setDescription] = useState("");
   const [selection, setSelection] = useState<IAmountOption>({ value: "1", label: "1" });
 
@@ -69,6 +68,9 @@ export const Form = () => {
 
     // populate object
     const newItem: IItem = { description: description, quantity: +selection.value, packed: false, id: Date.now() };
+
+    //send
+    onAddItems(newItem);
 
     // reset
     setDescription("");
@@ -92,13 +94,6 @@ export const Form = () => {
     <div className="bg-orange-400 py-11 px-0 flex flex-col">
       <h3 className="text-xl mb-10 text-center">What do you need for your trip?😍</h3>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center gap-4">
-        <input
-          className=" bg-yellow-100 rounded-3xl cursor-pointerfont-medium text-left py-2 px-6"
-          type="text"
-          placeholder="Item..."
-          value={description}
-          onChange={handleDescription}
-        />
         <Select
           className="w-56"
           styles={selectStyles}
@@ -106,6 +101,14 @@ export const Form = () => {
           onChange={handleSelect}
           value={selection}
         />
+        <input
+          className="bg-banana rounded-3xl w-56 cursor-pointerfont-medium text-left py-2 px-6"
+          type="text"
+          placeholder="Item..."
+          value={description}
+          onChange={handleDescription}
+        />
+
         <button className="btn btn-sm btn-success px-12 btn-circle">ADD</button>
       </form>
     </div>
