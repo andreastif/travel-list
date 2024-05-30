@@ -25,7 +25,7 @@ export const TravelPage = () => {
       <Logo />
       <Form onAddItems={handleAddItems} />
       <PackingList items={items} onDeleteItem={handleDeleteItem} onPackItem={handlePackItem} />
-      <Stats />
+      <Stats items={items} />
     </>
   );
 };
