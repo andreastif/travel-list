@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IItem } from "../../../types/types";
-import Select from "react-select";
+import Select, { OptionProps, StylesConfig } from "react-select";
 import { SingleValue } from "react-select";
 
 interface IAmountOption {
@@ -30,6 +30,30 @@ const amountOptions: IAmountOption[] = [
   { value: "19", label: "19" },
   { value: "20", label: "20" },
 ];
+
+const selectStyles: StylesConfig<IAmountOption, false> = {
+  control: (base) => ({
+    ...base,
+    borderColor: "rgb(254, 243, 199)",
+    backgroundColor: "rgb(254, 243, 199)",
+    borderRadius: "17px",
+    color: "black !important",
+    cursor: "pointer",
+  }),
+  option: (base, state: OptionProps<IAmountOption, false>) => ({
+    ...base,
+    backgroundColor: state.isFocused ? "rgba(137, 184, 206, 0.53)" : "rgb(254, 243, 199)",
+    borderColor: "rgb(254, 243, 199)",
+    color: "black !important",
+  }),
+  menu: (base) => ({
+    ...base,
+    marginTop: "5px",
+
+    border: "none",
+    borderColor: "rgb(254, 243, 199)",
+  }),
+};
 
 export const Form = () => {
   const [description, setDescription] = useState("");
@@ -75,7 +99,13 @@ export const Form = () => {
           value={description}
           onChange={handleDescription}
         />
-        <Select className="w-56" options={amountOptions} onChange={handleSelect} value={selection} />
+        <Select
+          className="w-56"
+          styles={selectStyles}
+          options={amountOptions}
+          onChange={handleSelect}
+          value={selection}
+        />
         <button className="btn btn-sm btn-success px-12 btn-circle">ADD</button>
       </form>
     </div>
